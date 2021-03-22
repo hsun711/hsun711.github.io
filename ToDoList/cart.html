@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./style.css" >
+</head>
+<body>
+    <div id="app">
+        <a class="menuBtn">
+            <span class="open"><i class="fas fa-bars fa-2x"></i></span>
+            <span class="close"><i class="fas fa-times fa-2x"></i></span>
+        </a>
+        
+        <div class="menu ">
+            <ul class="nav">
+                <li><a href="index.html">Tasks</a></li>
+                <li><a href="calender.html">Calender</a></li>
+                <li><a href="./cart.html">Shopping Cart</a></li>
+                <li><a href="./Game Web/index.html" target="_blank">Game Web</a></li>
+            </ul>
+        </div>
+
+        <div class="page">
+            <div class="container clearfix">
+                <div class="row">
+                    <div class="col-4">
+                        <span>商品</span>
+                    </div>
+                    <div class="col-8">
+                        <ul class="navList">
+                            <li>單價</li>
+                            <li>數量</li>
+                            <li>總計</li>
+                            <li>移除</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div v-for="(item,index) in items">
+                <div class="container clearfix">
+                    <div class="row itemRow">
+                        <div class="col-4 prodImg">
+                            <img :src="item.imgUrl">
+                            <span>{{item.itemName}}</span>
+                        </div>
+                        <div class="col-8 navList">
+                            <div class="proDetail">
+                               <ul>
+                                    <li>
+                                        <span>$</span>{{item.price}}
+                                    </li>
+                                    <li>
+                                        <a href="#" @click="minus(item)"><img src="./img/minus.png" width="15" height="15"></a>
+                                        {{item.count}}
+                                        <a href="#" @click="add(item)"><img src="./img/add.png" width="15" height="15"></a>
+                                    </li>
+                                    <li>{{item.count * item.price}}</li>
+                                    <li>
+                                        <a href="#" @click="trash(index)"><img src="./img/trash.png" width="30" height="30"></a>
+                                    </li>
+                                </ul> 
+                            </div>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+    </div>
+
+    <script>
+
+        new Vue({
+            el:"#app",
+            data:{
+                items:[
+                    {
+                        "id":"1",
+                        "itemName":"優質短袖白T",
+                        "imgUrl":"https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80",
+                        "price":"500",
+                        "count":"1"
+                    },
+                    {
+                        "id":"2",
+                        "itemName":"骷髏手短黑T",
+                        "imgUrl":"https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+                        "price":"790",
+                        "count":"1"
+                    },
+                    {
+                        "id":"3",
+                        "itemName":"超時尚牛仔庫",
+                        "imgUrl":"https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80",
+                        "price":"1200",
+                        "count":"1"
+                    },
+                    {
+                        "id":"4",
+                        "itemName":"質感褐色系大衣服",
+                        "imgUrl":"https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80",
+                        "price":"2300",
+                        "count":"1"
+                    }
+                ],
+            },
+            methods: {
+                minus(item){
+                    if(item.count>1){
+                        item.count--;
+                    };
+                },
+                add(item){
+                    item.count ++;
+                },
+                trash(index){
+                    this.items.splice(index,1);
+                }
+            },
+
+        })
+
+        
+
+        var app = document.getElementById("app");
+        var menuBtn = document.getElementsByClassName("menuBtn")[0];
+        
+
+        menuBtn.addEventListener("click",function(){
+            app.classList.toggle("open");
+        });
+
+
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>   
+</body>
+</html>
