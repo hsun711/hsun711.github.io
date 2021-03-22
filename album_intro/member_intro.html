@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" >
+    <title>專輯介紹</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="clearfix">
+            <div class="logo">
+                <img src="./img/seventeen.jpg" alt="seventeen">
+            </div>
+            <div class="artist">
+                <div class="artist_name">
+                   <h1>SEVENTEEN (세븐틴)</h1>
+                   <ul>
+                    <li><a href="https://www.facebook.com/seventeennews" target="_blank" class="fb"></a></li>
+                    <li><a href="https://twitter.com/pledis_17?lang=zh-tw" target="_blank" class="tw"></a></li>
+                    <li><a href="https://www.instagram.com/saythename_17/" target="_blank" class="insta"></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA" target="_blank" class="yt"></a></li>
+                </ul> 
+                </div>
+                <div class="nav_list">
+                    <ul>
+                        <li><a href="./album_intro.html">專輯</a></li>
+                        <li><a href="./member_intro.html">成員介紹</a></li>
+                    </ul>
+                </div>  
+            </div>
+        </div> 
+    </div>
+
+    <div>
+        <img src="./img/border.png" width="100%" class="border">
+    </div>
+
+    <div id="app" >
+        <div class="clearfix">
+            <div class="member_list">
+                <div class="group_img">
+                    <h1>團體資料</h1>
+                    <ul>
+                        <li>
+                            <img src="./img/group_img.jpg">
+                            <a href="./member_intro.html">Seventeen</a>
+                        </li>
+                    </ul>  
+                </div>
+                
+                <h1>成員</h1>
+                <ul v-for="member in members">
+                    <li>
+                        <img :src="member.icon" class="member_icon">
+                        <a href= "#" @click="change(member.name)">{{member.name}}</a>
+                    </li>
+                </ul>
+            </div> 
+            <div class="member_intro">
+                <div class="group_intro">
+                    <ul v-for="item in group" >
+                        <li>
+                            <img :src="item.img">
+                            <h1>團體名稱:{{item.group}}</h1>
+                            <span>{{item.contant}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="intro_list" >
+                    <ul v-for="item in info">
+                        <li>
+                            <h1>藝名：{{item.artist}}</h1>
+                            <h1>本名：{{item.name}}</h1>
+                            <h1>生日：{{item.born}}</h1>
+                            <h1>出生地：{{item.country}}</h1>
+                            <h1>身高：{{item.high}}</h1>
+                            <h1>體重：{{item.weight}}</h1>
+                            <h1>血型：{{item.blood}}</h1>
+                            <h1>星座：{{item.star}}</h1>
+                            <h1>家庭：{{item.family}}</h1>
+                            <h1>學歷：{{item.school}}</h1>
+                            <h1>隊內擔當：{{item.work}}</h1>
+                            <h1>小分隊：{{item.team}}</h1>
+                        </li>
+                    </ul>  
+                </div>
+
+                <div v-for="member in info"  class="member_img">  
+                    <img :src="member.img">  
+                </div>   
+            </div>
+            
+        </div>    
+    </div>
+        
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                members:[],
+                info:[],
+                group:[
+                    {
+                        "group":"SEVENTEEN",
+                        "img":"https://scontent.ftpe4-1.fna.fbcdn.net/v/t1.0-9/121682630_1713983495431110_2424943225435975475_o.jpg?_nc_cat=107&ccb=1-3&_nc_sid=730e14&_nc_ohc=vIPU5DIHekMAX9N22r4&_nc_ht=scontent.ftpe4-1.fna&oh=5f214a71f72baa7e9402a2d1252d61a5&oe=606BEB48",
+                        "contant":"團體名字「SEVENTEEN」寓意為「13名成員+3個分隊+1個團體」，問候語為「Say the name, SEVENTEEN」，同時左手比1，右手比7，並將兩手向前伸再彎曲交疊。 官方粉絲名稱「CARAT (캐럿) 」取自於鑽石的質量單位，比喻SEVENTEEN是像鑽石一樣閃耀的存在，隨著CARAT的數量增加SEVENTEEN的價值也越高。 應援色為玫瑰石英粉與寧靜藍，玫瑰石英粉是暖和且柔軟的，而寧靜藍則是沉靜、平穩的，用來描述SEVENTEEN的溫暖及清澈。"
+                    },
+                ],
+            },
+            methods: {
+                change(val){
+                    var memberObj = this.members.filter(function(obj){
+                        return obj.name === val;
+                    });
+
+                    this.info = memberObj[0].info;
+                    this.group = [];
+                },
+                groupIntro(val){
+                    
+                    console.log(val);
+                }
+            },
+            mounted() {
+                axios.get('member_list.json')
+                .then(res => {
+    
+                    this.members = res.data;
+                })
+            },
+        });
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css" >
+    <title>專輯介紹</title>
+</head>
+<body>
+
+    <div class="container">
+        <div class="clearfix">
+            <div class="logo">
+                <img src="./img/seventeen.jpg" alt="seventeen">
+            </div>
+            <div class="artist">
+                <div class="artist_name">
+                   <h1>SEVENTEEN (세븐틴)</h1>
+                    <ul>
+                        <li><a href="https://www.facebook.com/seventeennews" target="_blank" class="fb"></a></li>
+                        <li><a href="https://twitter.com/pledis_17?lang=zh-tw" target="_blank" class="tw"></a></li>
+                        <li><a href="https://www.instagram.com/saythename_17/" target="_blank" class="insta"></a></li>
+                        <li><a href="https://www.youtube.com/channel/UCfkXDY7vwkcJ8ddFGz8KusA" target="_blank" class="yt"></a></li>
+                    </ul> 
+                </div>
+                <div class="nav_list">
+                    <ul>
+                        <li><a href="./album_intro.html">專輯</a></li>
+                        <li><a href="./member_intro.html">成員介紹</a></li>
+                    </ul>
+                </div>  
+            </div>   
+        </div> 
+    </div>
+
+    <img src="./img/border.png" width="100%">
+
+    <div id="app" >
+        <div class="clearfix">
+            <div class="favorite">
+                <h1>
+                    <img src="./img/lover.png" height="50px" width="50px">&nbsp我的最愛
+                </h1>
+                <ul v-for="(img,index) in cart" >
+                    <li>
+                        <img :src="img" height="100px">
+                        <a href="#" v-on:click="remove(index)"><img src="./img/trash.png" height="20px" width="20px"></a>
+                    </li>
+                </ul>
+            </div> 
+            <div class="album">
+                <ul v-for="item in album" class="album_list">
+                    <li>
+                        <a :href="item.url"><img :src="item.img" height="200px"></a>
+                        <h1>{{item.title}}</h1>
+                        <p>{{item.data}}</p>
+                        <a href="#"><img src="./img/favorite.png" class="btnBuy" @click="add(item.img)"></a>
+                    </li>
+                </ul> 
+            </div>
+        </div>    
+    </div>
+        
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                album:[],
+                cart:[],
+            },
+            mounted() {
+                axios.get("https://run.mocky.io/v3/384683bf-3a26-4097-8a04-c9b1e380c836")
+                .then(res => {
+                    this.album = res.data;
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+            },
+            methods: {
+                add(img){
+                    this.cart.push(img);
+                },
+                remove(index){
+                    this.cart.splice(index,1);
+                }
+            },
+        });
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,269 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    /* border: 1px solid #373637; */
+}
+
+body{
+    background-image: url("./img/bg-body.png");
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #373637;
+}
+
+@media only screen and (min-width: 769px) and (max-width: 992px) {
+    .container {
+      width: 750px;
+    }
+  }
+
+@media only screen and (max-width: 768px){
+    .logo{
+        width: 100%;
+    }
+    .artist{
+        width: 100%;
+    }
+}
+
+
+
+.container{
+    width: 100%;
+    height: 300px;
+    margin: 30px auto;
+}
+
+.clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.logo{
+    float: left;
+    width: 40%;
+}
+
+.logo img{
+    display: block;
+    margin: 0 auto;
+    height: 300px;
+    border-radius: 50%;       
+}
+.artist{
+    float: left;
+    width: 60%;
+    padding-top: 100px;
+}
+
+.artist_name li{
+    float: left;
+    list-style: none;
+    margin-top: 30px;
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.artist_name a{
+    display: block;
+    height: 30px;
+    width: 30px;
+
+}
+
+.fb{
+    background: url("./img/facebook.png") no-repeat center center;
+    background-size: 100%;
+}
+
+.tw{
+    background: url("./img/twitter.png") no-repeat center center;
+    background-size: 100%; 
+}
+
+.insta{
+    background: url("./img/instagram.png") no-repeat center center;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+.yt{
+    background: url("./img/youtube.png") no-repeat center center;
+    background-size: 100%;
+}
+
+.nav_list{
+    margin-top: 150px;
+}
+
+.nav_list li{
+    float: left;
+    list-style: none;
+    margin-right: 30px;
+    font-weight: 600;
+}
+
+.nav_list a{
+    text-decoration: none;
+    color: #0a3d62;
+}
+
+.nav_list a:hover{
+    text-decoration: underline;
+}
+
+.album_list{
+    display: inline-block;
+    width: 220px;
+    height: 350px;
+    margin-top: 30px;
+    margin-left: 8px;
+}
+
+.album_list img:hover{
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
+.album_list li{
+    list-style: none;
+    overflow: hidden;
+}
+
+.album_list h1{
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+
+.album{
+    float: left;
+    width: 75%;
+    /* border: 1px solid #373637; */
+    text-align: center;
+}
+
+.favorite{
+    float: left;
+    width: 25%;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.favorite li{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.favorite ul li a{
+    margin-left: 10px;
+}
+
+.album_list .btnBuy{
+    height: 30px;
+    width: 30px;
+    margin-top: 10px;
+}
+
+.group_img{
+    padding-bottom: 30px;
+}
+
+.group_img img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 3px solid #2f3640;
+    transform: translateY(25px);
+}
+
+.group_intro li{
+    list-style: none;
+    margin-top: 30px;
+    margin-right: 60px;
+}
+
+.group_intro img{
+    width: 70%;
+    height: 70%;
+    padding-left: 150px;
+}
+
+.group_intro h1{
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.group_intro span{
+    line-height: 1.8;
+}
+
+.member_list{
+    float: left;
+    width: 25%;
+    margin-top: 30px;
+    padding-left: 60px;
+}
+
+
+.member_list li{
+    list-style: none;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+.member_list li a{
+    text-decoration: none;
+    color: #0a3d62;
+    margin-left: 10px;
+}
+
+.member_list li a:hover{
+    color: #3c6382;
+}
+
+.member_icon{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #2f3640;
+    transform: translateY(15px);
+}
+
+.member_intro{
+    float: left;
+    width: 75%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.intro_list{
+    float: left;
+    width: 55%;
+}
+
+.intro_list h1{
+    font-size: 20px;
+    margin-top: 30px;
+}
+
+.intro_list li{
+    list-style: none;
+    margin-top: 60px;
+}
+
+.member_img{
+   float: left;
+   width: 20%;
+   margin-top: 90px;
+}
+
+.member_img img{
+    width: 450px;
+    height: 450px;
+    border-radius: 5px;
+}
+
