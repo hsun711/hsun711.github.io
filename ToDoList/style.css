@@ -28,7 +28,7 @@ body{
     background-color: #ecf0f1;
     width: 55%;
     margin-top: 150px;
-    padding: 30px 50px;
+    padding: 20px 50px;
     transition: right .3s;
     
 }
@@ -184,9 +184,6 @@ body{
 }
 
 .page{
-    position: absolute;
-    top: 60px;
-    left: 200px;
     width: 80%;
     padding: 30px 50px;
     transition: right .3s;
