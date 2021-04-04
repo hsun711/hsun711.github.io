@@ -184,7 +184,8 @@ body{
 }
 
 .page{
-    width: 80%;
+    width: 70%;
+    margin-top: 100px;
     padding: 30px 50px;
     transition: right .3s;
 }
