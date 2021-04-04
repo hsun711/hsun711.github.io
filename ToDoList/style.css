@@ -18,17 +18,16 @@ body{
 }
 
 #app{
-    position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .content{
     background-color: #ecf0f1;
-    position: absolute;
-    top: 150px;
-    left: 400px;
     width: 55%;
+    margin-top: 150px;
     padding: 30px 50px;
     transition: right .3s;
     
@@ -116,7 +115,7 @@ body{
 
 .today > h1{
     display: inline;
-    font-size: 60px;
+    font-size: 200%;
 }
 
 .list{
@@ -140,7 +139,7 @@ body{
 
 .trash{
     position: absolute;
-    right: 70px;
+    left: 90%;
     width: 30px;
     height: 30px;
 }
@@ -158,7 +157,7 @@ body{
     width: 30px;
     height: 30px;
     position: absolute;
-    right: 70px;
+    left: 90%;
     top: 5px;
 }
 
