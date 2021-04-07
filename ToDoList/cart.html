@@ -48,8 +48,8 @@
                 <div class="container clearfix">
                     <div class="row itemRow">
                         <div class="col-4 prodImg">
-                            <img :src="item.imgUrl">
                             <span>{{item.itemName}}</span>
+                            <img :src="item.imgUrl">
                         </div>
                         <div class="col-8 navList">
                             <div class="proDetail">
@@ -64,7 +64,7 @@
                                     </li>
                                     <li>{{item.count * item.price}}</li>
                                     <li>
-                                        <a href="#" @click="trash(index)"><img src="./img/trash.png" width="30" height="30"></a>
+                                        <a href="#" @click="trash(index)"><img src="./img/trash.png" class="delete"></a>
                                     </li>
                                 </ul> 
                             </div>   
