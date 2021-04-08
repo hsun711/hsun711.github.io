@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="header">
         <div class="clearfix">
             <div class="logo">
                 <img src="./img/seventeen.jpg" alt="seventeen">
@@ -42,19 +42,19 @@
         <div class="clearfix">
             <div class="favorite">
                 <h1>
-                    <img src="./img/lover.png" height="50px" width="50px">&nbsp我的最愛
+                    <img src="./img/lover.png" height="40vmin" width="40vmin">&nbsp我的最愛
                 </h1>
                 <ul v-for="(img,index) in cart" >
                     <li>
-                        <img :src="img" height="100px">
-                        <a href="#" v-on:click="remove(index)"><img src="./img/trash.png" height="20px" width="20px"></a>
+                        <img :src="img" height="90vmin">
+                        <a href="#" v-on:click="remove(index)"><img src="./img/trash.png" height="20vmin" width="20vmin"></a>
                     </li>
                 </ul>
             </div> 
             <div class="album">
                 <ul v-for="item in album" class="album_list">
                     <li>
-                        <a :href="item.url"><img :src="item.img" height="200px"></a>
+                        <a :href="item.url"><img :src="item.img" height="200vmin"></a>
                         <h1>{{item.title}}</h1>
                         <p>{{item.data}}</p>
                         <a href="#"><img src="./img/favorite.png" class="btnBuy" @click="add(item.img)"></a>
