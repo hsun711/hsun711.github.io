@@ -124,8 +124,8 @@ body{
 
 .album_list{
     display: inline-block;
-    width: 220px;
-    height: 350px;
+    width: 30vmin;
+    height: 40vmin;
     margin-top: 30px;
     margin-left: 8px;
 }
@@ -170,9 +170,9 @@ body{
     margin-left: 10px;
 }
 
-.album_list .btnBuy{
-    height: 30px;
-    width: 30px;
+.btnBuy{
+    height: 4vmin;
+    width: 4vmin;
     margin-top: 10px;
 }
 
@@ -276,6 +276,18 @@ body{
 }
 
 @media only screen and (max-width: 768px){
+    .album_list{
+        width: 90%;
+        font-size: 5vmin;
+    }
+    .album_list h1{
+        font-size: 4vmin;
+        margin-bottom: 3vmin;
+    }
+    .btnBuy{
+        height: 7vmin;
+        width: 7vmin;
+    }
     .member_list{
         width: 50%;
         padding-left: 15px;
